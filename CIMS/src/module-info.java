@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author mac
- *
- */
-module CIMS {
-}
