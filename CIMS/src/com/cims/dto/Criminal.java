@@ -9,6 +9,19 @@ public class Criminal {
 	private String identifying_marks;
 	private String crime;
 	private String crime_location;
+	
+	public Criminal(int id, String name, int age, String gender, String address, String identifying_marks, String crime,
+			String crime_location) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+		this.address = address;
+		this.identifying_marks = identifying_marks;
+		this.crime = crime;
+		this.crime_location = crime_location;
+	}
 	public int getId() {
 		return id;
 	}
@@ -57,24 +70,12 @@ public class Criminal {
 	public void setCrime_location(String crime_location) {
 		this.crime_location = crime_location;
 	}
-	public Criminal() {}
-	public Criminal(int id, String name, int age, String gender, String address, String identifying_marks, String crime,
-			String crime_location) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.age = age;
-		this.gender = gender;
-		this.address = address;
-		this.identifying_marks = identifying_marks;
-		this.crime = crime;
-		this.crime_location = crime_location;
-	}
+	
 	@Override
 	public String toString() {
-		return "Criminal [id=" + id + ", name=" + name + ", age=" + age + ", gender=" + gender + ", address=" + address
-				+ ", identifying_marks=" + identifying_marks + ", crime=" + crime + ", crime_location=" + crime_location
-				+ "]";
+		return "Crimid= " + id + ", name=" + name + ", age=" + age + ", gender=" + gender + ", address=" + address
+				+ ", identifying_marks=" + identifying_marks + ", crime= " + crime + ", crime_location=" + crime_location
+				;
 	}
 	
 

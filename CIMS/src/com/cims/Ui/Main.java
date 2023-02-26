@@ -9,7 +9,7 @@ import com.cims.dao.Police_stationDaoImpl;
 
 public class Main {
 	public static void main(String[] args) throws SQLException, NoCrimeRecord {
-		String banner = " ======================================================================================================================\n"
+String banner = " ========================================================================================================================\n"
 				+ "=  ====  ====  =========  ==========================================================     ===    ==  =====  ===      ==\n"
 				+ "=  ====  ====  =========  =========================================================  ===  ===  ===   ===   ==  ====  =\n"
 				+ "=  ====  ====  =========  =======================================  ===============  =========  ===  =   =  ==  ====  =\n"
@@ -35,6 +35,7 @@ System.out.println(banner);
 System.out.println(sb.toString());
 System.out.println();
 		DashBoard dbs=new DashBoard();
+		Police_StationDao ps=new Police_stationDaoImpl();
 		
 		Scanner sc=new Scanner(System.in);
 			int i=0;
@@ -44,26 +45,39 @@ System.out.println();
 				System.out.println("0. For Exit ");
 				i=sc.nextInt();
 				switch(i) {
-				case 1: Police_StationDao ps=new Police_stationDaoImpl();
+				case 1: ps=new Police_stationDaoImpl();
 						System.out.println("Please Enter the username: ");
 						String uname=sc.next();
 						System.out.println("Please Enter password: ");
 						String pass=sc.next();
 						
 						
-						if(uname.equalsIgnoreCase("admin"))
+						if(uname.equalsIgnoreCase("admin")&& pass.equalsIgnoreCase("admin"))
 						{
 							System.out.println(ps.AdminLogin(uname, pass));
 							dbs.printAdminMenu(sc);
 							
 						}
-						else {
+						else if(uname!="admin") {
 							System.out.println(ps.psLogin(uname, pass));
 							dbs.printUserMenu(sc);
 						}
 						break;
 						
 				case 2:
+					
+					 System.out.println("Enter Name: ");
+					 		String name=sc.next();
+					 		System.out.println("User Age: ");
+					 		int age=sc.nextInt();
+					 		System.out.println("Enter Email: ");
+					 		String email=sc.next();
+					 		System.out.println("Enter password");
+					 		String pswd=sc.next();
+					 
+						ps.NewUserRegistration(name,age,email,pswd);
+							
+						break;
 				}
 				
 				

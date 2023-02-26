@@ -58,8 +58,12 @@ public class Crime {
 	
 	@Override
 	public String toString() {
-		return "Crims [crid=" + crid + ", crPlace=" + crPlace + ", type=" + type + ", dateTime=" + dateTime
-				+ ", status=" + status + ", ps_id=" + ps_id + "]";
+		return "Crims id:-------------------------------    "+crid +"\n"+
+				"Place: --------------------------------     "+crPlace +"\n"+ 
+				"Crime Type: ---------------------------    "+ type +"\n"+  
+				"DateTime: ------------------------------     "+dateTime+"\n"+
+				 "Status : ------------------------------    "+ status + "\n"+
+				"Police Station Number: ----------------      "+ps_id +"\n";
 	}
 	
 	
