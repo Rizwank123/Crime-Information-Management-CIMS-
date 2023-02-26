@@ -165,6 +165,8 @@ public class DashBoard {
 			 break;
 			 
 		 case 10:
+			 System.out.println("Enter Crime Id ");
+			 int cid=sc.nextInt();
 			 sc.nextLine();
 			 System.out.println("Enter Crime Type: ");
 			 String crimeType=sc.nextLine();
@@ -180,7 +182,9 @@ public class DashBoard {
 			 String status=sc.nextLine();
 			 System.out.println("Enter Crime Police Station Id: ");
 			 int psId=sc.nextInt();
-			 crime.NewCrime(crimeDes, crimeDes, Location, psId, criminal_name, victim_name, status);
+			 System.out.println("Enter the age ");
+			 int age=sc.nextInt();
+			 crime.NewCrime(cid,crimeDes, crimeDes, Location, psId, criminal_name, victim_name, status,age);
 			 break;
 			 
 			
