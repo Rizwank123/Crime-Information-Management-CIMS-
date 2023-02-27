@@ -24,6 +24,6 @@ public interface CrimeDao {
 	// Returns a list of unsolved crimes.
 	public List<Crime> noOfUnsolvedCrime() throws NoCrimeRecord;
 	public void solvedIt(int crimeId) throws NoCrimeRecord;
-	public void NewCrime(int CriminalId,String crime_type,String crime_desc,String location,int psId,String criminal,String victim,String Status,int age ) throws NoCrimeRecord;
+	public void NewCrime(int CriminalId,String crime_type,String crime_desc,String location,int psId,String criminal,String victim,String Status,int age,String gender,String identityingMark,String address ) throws NoCrimeRecord;
 
 }

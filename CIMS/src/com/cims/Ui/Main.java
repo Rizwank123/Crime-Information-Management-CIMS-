@@ -1,6 +1,7 @@
 package com.cims.Ui;
 
 import java.sql.SQLException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.cims.Exceptions.NoCrimeRecord;
@@ -43,7 +44,14 @@ System.out.println();
 				System.out.println("1. For login Already Register user");
 				System.out.println("2. For New  User  Register ");
 				System.out.println("0. For Exit ");
-				i=sc.nextInt();
+				try {
+					i=sc.nextInt();
+				}catch(InputMismatchException ex )
+				{
+					System.out.println("Enter Integer Only");
+					Main.main(args);
+				}
+				if(i==0 ||i==1 || i==2) {
 				switch(i) {
 				case 1: ps=new Police_stationDaoImpl();
 						System.out.println("Please Enter the username: ");
@@ -79,13 +87,16 @@ System.out.println();
 							
 						break;
 				}
-				
+			}
+				else System.out.println("Invalid Input\n");
 				
 			}while(i!=0);
 			
 			
 			
 					
+	
 	}
+	
 
 }

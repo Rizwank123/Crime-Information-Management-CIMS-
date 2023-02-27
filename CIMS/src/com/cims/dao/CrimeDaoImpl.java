@@ -211,6 +211,7 @@ public class CrimeDaoImpl implements CrimeDao {
 		String query="UPDATE crime SET status = 'Solved' WHERE crime_id = ?";
 		try(Connection conn=Dbutil.connectToDb()){
 			PreparedStatement ps=conn.prepareStatement(query);
+			ps.setInt(1,crimeId);
 			if(ps.executeUpdate()>0)
 			{
 				System.out.println("Case is Solved ");
@@ -226,7 +227,7 @@ public class CrimeDaoImpl implements CrimeDao {
 
 	@Override
 	public void NewCrime(int cr_id,String crime_type, String crime_desc, String location, int psId, String criminal,
-			String victim, String Status ,int age ) throws NoCrimeRecord {
+			String victim, String Status ,int age,String gender,String identityingMark,String address ) throws NoCrimeRecord {
 		// TODO Auto-generated method stub
 		try(Connection conn=Dbutil.connectToDb())
 		{
@@ -245,9 +246,9 @@ public class CrimeDaoImpl implements CrimeDao {
 	            statement.setString(8, Status);
 
 	            // Execute the SQL statement
-	            int rowsInserted = statement.executeUpdate();
+	            //int rowsInserted = statement.executeUpdate();
 	            
-	            String criminalQuery = "INSERT INTO criminal ( crime_id, name, age) VALUES ( ?, ?, ?)";
+	            String criminalQuery = "INSERT INTO criminal (crime_id, cr_name, cr_age,gender,identifying_mark,cr_address) VALUES ( ?, ?, ?,?,?,?)";
 	            PreparedStatement criminalStatement = conn.prepareStatement(criminalQuery);
 	            // replace with the actual criminal ID
 	            criminalStatement.setInt(1, cr_id); // replace with the actual crime ID from the previous insert
@@ -255,10 +256,10 @@ public class CrimeDaoImpl implements CrimeDao {
 	            criminalStatement.setInt(3, age); // replace with the actual criminal age
 	            
 
-	            if (rowsInserted > 0 &&criminalStatement.executeUpdate()>0 ) {
+	            if (statement.executeUpdate() > 0 &&criminalStatement.executeUpdate()>0 ) {
 	                System.out.println("A new crime was inserted successfully!");
 	            } else {
-	               throw new NoCrimeRecord("Some Thing is Wrong Please Check Your Qury");
+	               throw new NoCrimeRecord("Some Thing is Wrong Please Check Your Query");
 	            }
 	            {
 	            	

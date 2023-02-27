@@ -119,7 +119,7 @@ public class DashBoard {
 		 	break;
 		 case 6:
 			 try {
-					list=crime.noOfSolvedCrime();
+					list=crime.noOfUnsolvedCrime();
 					System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
 					list.forEach(l->System.out.println(l));
 					System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
@@ -150,6 +150,9 @@ public class DashBoard {
 				 		String id=sc.nextLine();
 				 
 					Crime c=crime.findbyVictimName(id);
+					if(c==null) {
+						throw new NoCrimeRecord("No Record Found");
+					}
 					System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
 					System.out.println(c);
 					System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
@@ -180,11 +183,17 @@ public class DashBoard {
 			 String victim_name=sc.nextLine();
 			 System.out.println("Enter Status  : ");
 			 String status=sc.nextLine();
+			 System.out.println("Enter gender ");
+			 String gender=sc.nextLine();
+			 System.out.println("Enter Address ");
+			 String addr=sc.nextLine();
+			 System.out.println("Enter Identification Mark ");
+			 String idt=sc.nextLine();
 			 System.out.println("Enter Crime Police Station Id: ");
 			 int psId=sc.nextInt();
 			 System.out.println("Enter the age ");
 			 int age=sc.nextInt();
-			 crime.NewCrime(cid,crimeDes, crimeDes, Location, psId, criminal_name, victim_name, status,age);
+			 crime.NewCrime(cid,crimeDes, crimeDes, Location, psId, criminal_name, victim_name, status,age,gender,idt,addr);
 			 break;
 			 
 			
