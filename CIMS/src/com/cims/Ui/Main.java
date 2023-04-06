@@ -32,7 +32,7 @@ for (String message : messages) {
 }
 sb.append("\033[0m");
 
-System.out.println(banner);
+System.out.println(colors[(int) (Math.random() * colors.length)]+banner);
 System.out.println(sb.toString());
 System.out.println();
 		DashBoard dbs=new DashBoard();
@@ -62,13 +62,29 @@ System.out.println();
 						
 						if(uname.equalsIgnoreCase("admin")&& pass.equalsIgnoreCase("admin"))
 						{
-							System.out.println(ps.AdminLogin(uname, pass));
+							String crd=ps.AdminLogin(uname, pass);
+							System.out.println(crd);
+							if(crd.equals("Invalid user or password"))
+							{
+								System.out.println("hi");
+								Main.main(args);
+							}
+							else {
 							dbs.printAdminMenu(sc);
+							}
 							
 						}
-						else if(uname!="admin") {
-							System.out.println(ps.psLogin(uname, pass));
+						else if(!uname.equalsIgnoreCase("admin")) {
+							String crd=ps.psLogin(uname, pass);
+
+							System.out.println(crd);
+							if(crd.equals("Invalid User Or Password try again please")) {
+								System.out.println("hello");
+								Main.main(args);
+							}
+							else {
 							dbs.printUserMenu(sc);
+							}
 						}
 						break;
 						
@@ -91,6 +107,7 @@ System.out.println();
 				else System.out.println("Invalid Input\n");
 				
 			}while(i!=0);
+			System.out.println("\033[092m"+"=-=-=-=-=-=-=-=-=-=-=-=-=->Thanks For visiting <-=-=-==-=-=-=-=-=-=-=-=-=-=-=");
 			
 			
 			

@@ -11,6 +11,7 @@ import java.util.List;
 import com.cims.Exceptions.NoCrimeRecord;
 import com.cims.Util.Dbutil;
 import com.cims.dto.Crime;
+import com.mysql.cj.xdevapi.Statement;
 
 public class CrimeDaoImpl implements CrimeDao {
 
@@ -109,6 +110,7 @@ public class CrimeDaoImpl implements CrimeDao {
 		
 	}
 
+	//findbyVictimName method use find list of crime 
 	@Override
 	public Crime findbyVictimName(String vName) {
 		
@@ -141,6 +143,7 @@ public class CrimeDaoImpl implements CrimeDao {
 		return c;
 	}
 
+	//noOfSolvedCrime method return the list of crime which status is solved
 	@Override
 	public List<Crime> noOfSolvedCrime() {
 		List<Crime>list=new ArrayList<>();
@@ -172,6 +175,8 @@ public class CrimeDaoImpl implements CrimeDao {
 		
 	}
 
+	
+	//noOfUnSolvedCrime method return the list of crime which status is Unsolved
 	@Override
 	public List<Crime> noOfUnsolvedCrime() {
 		// TODO Auto-generated method stub
@@ -214,7 +219,7 @@ public class CrimeDaoImpl implements CrimeDao {
 			ps.setInt(1,crimeId);
 			if(ps.executeUpdate()>0)
 			{
-				System.out.println("Case is Solved ");
+				System.out.println("\033[0;92m"+"Case is Solved ");
 			}
 			else throw new NoCrimeRecord("No Record Found");
 			} catch (SQLException e) {
@@ -226,49 +231,124 @@ public class CrimeDaoImpl implements CrimeDao {
 	}
 
 	@Override
-	public void NewCrime(int cr_id,String crime_type, String crime_desc, String location, int psId, String criminal,
-			String victim, String Status ,int age,String gender,String identityingMark,String address ) throws NoCrimeRecord {
-		// TODO Auto-generated method stub
-		try(Connection conn=Dbutil.connectToDb())
-		{
-			 String sql = "INSERT INTO crime (crime_type, date_time, crime_desc, location, ps_id, criminal, victim, status) VALUES (?,?, NOW(), ?, ?, ?, ?, ?, ?)";
-	            PreparedStatement statement = conn.prepareStatement(sql);
+//	public void NewCrime(int crime_id,int cr_id,String crime_type, String crime_desc, String location, int psId, String criminal,
+//			String victim, String Status ,int age,String gender,String identityingMark,String address ) throws NoCrimeRecord {
+//		// TODO Auto-generated method stub
+//		try(Connection conn=Dbutil.connectToDb())
+//		{
+//			 String sql = "INSERT INTO crime (crime_type, date_time, crime_desc, location, ps_id, criminal, victim, status) VALUES (?,?, NOW(), ?, ?, ?, ?, ?, ?)";
+//	            PreparedStatement statement = conn.prepareStatement(sql);
+//
+//	            // Set the values for the parameters of the SQL statement
+//	            
+//	            statement.setInt(1, cr_id);
+//	            statement.setString(2, crime_type);
+//	            statement.setString(3, crime_desc);
+//	            statement.setString(4,location);
+//	            statement.setInt(5, psId); // assuming police station id is 1
+//	            statement.setString(6, criminal);
+//	            statement.setString(7, victim);
+//	            statement.setString(8, Status);
+//
+//	            // Execute the SQL statement
+//	            //int rowsInserted = statement.executeUpdate();
+//	            
+//	            String criminalQuery = "INSERT INTO criminal (crime_id, cr_name, cr_age,gender,identifying_mark,cr_address) VALUES ( ?, ?, ?,?,?,?,?,?)";
+//	            PreparedStatement criminalStatement = conn.prepareStatement(criminalQuery);
+//	            
+//	            criminalStatement.setInt(1, cr_id); 
+//	            criminalStatement.setString(2, criminal); 
+//	            criminalStatement.setInt(3, age); 
+//	            criminalStatement.setString(4, gender); 
+//	            criminalStatement.setString(5, identityingMark); 
+//	            criminalStatement.setString(6, address); 
+//	            
+//	            
+//
+//	            if (statement.executeUpdate() > 0 &&criminalStatement.executeUpdate()>0 ) {
+//	                System.out.println("A new crime was inserted successfully!");
+//	            } else {
+//	               throw new NoCrimeRecord("Some Thing is Wrong Please Check Your Query");
+//	            }
+//	            {
+//	            	
+//	            }
+//		}catch(SQLException ex) {
+//			ex.printStackTrace();
+//		}
+//		
+//	}
+	
+	
+	public void newCrime(String crime_type, String crime_desc, String location, int psId, String criminal,
+		    String victim, String status, int age, String gender, String identifyingMark, String address) throws SQLException {
 
-	            // Set the values for the parameters of the SQL statement
-	            
-	            statement.setInt(1, cr_id);
-	            statement.setString(2, crime_type);
-	            statement.setString(3, crime_desc);
-	            statement.setString(4,location);
-	            statement.setInt(5, psId); // assuming police station id is 1
-	            statement.setString(6, criminal);
-	            statement.setString(7, victim);
-	            statement.setString(8, Status);
+		    Connection conn = null;
+		    PreparedStatement stmt = null;
 
-	            // Execute the SQL statement
-	            //int rowsInserted = statement.executeUpdate();
-	            
-	            String criminalQuery = "INSERT INTO criminal (crime_id, cr_name, cr_age,gender,identifying_mark,cr_address) VALUES ( ?, ?, ?,?,?,?)";
-	            PreparedStatement criminalStatement = conn.prepareStatement(criminalQuery);
-	            // replace with the actual criminal ID
-	            criminalStatement.setInt(1, cr_id); // replace with the actual crime ID from the previous insert
-	            criminalStatement.setString(2, criminal); // replace with the actual criminal name
-	            criminalStatement.setInt(3, age); // replace with the actual criminal age
-	            
+		    try {
+		        conn = Dbutil.connectToDb();
+		        conn.setAutoCommit(false);
 
-	            if (statement.executeUpdate() > 0 &&criminalStatement.executeUpdate()>0 ) {
-	                System.out.println("A new crime was inserted successfully!");
-	            } else {
-	               throw new NoCrimeRecord("Some Thing is Wrong Please Check Your Query");
-	            }
-	            {
-	            	
-	            }
-		}catch(SQLException ex) {
-			ex.printStackTrace();
+		        // Insert new crime record
+		        String insertCrimeQuery = "INSERT INTO crime (crime_type, date_time, crime_desc, location, ps_id, criminal, victim, status) "
+		            + "VALUES (?, NOW(), ?, ?, ?, ?, ?, ?)";
+		        stmt = conn.prepareStatement(insertCrimeQuery,stmt.RETURN_GENERATED_KEYS);
+
+		        stmt.setString(1, crime_type);
+		        stmt.setString(2, crime_desc);
+		        stmt.setString(3, location);
+		        stmt.setInt(4, psId);
+		        stmt.setString(5, criminal);
+		        stmt.setString(6, victim);
+		        stmt.setString(7, status);
+
+		        int affectedRows = stmt.executeUpdate();
+
+		        if (affectedRows == 0) {
+		            throw new SQLException("Failed to insert new crime record");
+		        }
+
+		        // Get the generated crime_id value for the new crime record
+		        int crimeId;
+		        try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+		            if (generatedKeys.next()) {
+		                crimeId = generatedKeys.getInt(1);
+		            } else {
+		                throw new SQLException("Failed to insert new crime record, no ID obtained.");
+		            }
+		        }
+
+		        // Insert new criminal record
+		        String insertCriminalQuery = "INSERT INTO criminal (crime_id, cr_name, cr_age, gender, identifying_mark, cr_address) "
+		            + "VALUES (?, ?, ?, ?, ?, ?)";
+		        stmt = conn.prepareStatement(insertCriminalQuery);
+
+		        stmt.setInt(1, crimeId);
+		        stmt.setString(2, criminal);
+		        stmt.setInt(3, age);
+		        stmt.setString(4, gender);
+		        stmt.setString(5, identifyingMark);
+		        stmt.setString(6, address);
+
+		        stmt.executeUpdate();
+
+		        conn.commit();
+		    } catch (SQLException e) {
+		        if (conn != null) {
+		            try {
+		                conn.rollback();
+		            } catch (SQLException ex) {
+		                ex.printStackTrace();
+		            }
+		        }
+		        throw e;
+		    } finally {
+		        conn.close();
+		        stmt.close();
+		    }
 		}
-		
-	}
+
 
 	
 

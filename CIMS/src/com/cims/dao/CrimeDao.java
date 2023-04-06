@@ -1,5 +1,6 @@
 package com.cims.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.cims.Exceptions.NoCrimeRecord;
@@ -24,6 +25,9 @@ public interface CrimeDao {
 	// Returns a list of unsolved crimes.
 	public List<Crime> noOfUnsolvedCrime() throws NoCrimeRecord;
 	public void solvedIt(int crimeId) throws NoCrimeRecord;
-	public void NewCrime(int CriminalId,String crime_type,String crime_desc,String location,int psId,String criminal,String victim,String Status,int age,String gender,String identityingMark,String address ) throws NoCrimeRecord;
+	// void NewCrime(int crime_id,int CriminalId,String crime_type,String crime_desc,String location,int psId,String criminal,String victim,String Status,int age,String gender,String identityingMark,String address ) throws NoCrimeRecord;
+
+	void newCrime(String crime_type, String crime_desc, String location, int psId, String criminal, String victim,
+			String status, int age, String gender, String identifyingMark, String address) throws SQLException;
 
 }

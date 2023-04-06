@@ -21,14 +21,14 @@ public class DashBoard {
 	Police_StationDao ps=new Police_stationDaoImpl();
 	public void printAdminMenu(Scanner sc) throws SQLException, NoCrimeRecord  {
 		String s="===================================\n"
-				+ "*     Admin Menu   		      	*\n"
-				+ "*   Enter your Choice            *\n"
+				+ "*     Admin Menu   		      *\n"
+				+ "*   Enter your Choice          *\n"
 				+"===================================\n";
 		
 		int i=0;
 		do {
 		System.out.println(s);
-		System.out.println("1. For search crime in Area");
+		System.out.println("1. For search crime ");
 		System.out.println("2. For search crime of Criminal ");
 		System.out.println("3. All Crime in  Current month ");
 		System.out.println("4. Serch Crime by type ");
@@ -188,12 +188,12 @@ public class DashBoard {
 			 System.out.println("Enter Address ");
 			 String addr=sc.nextLine();
 			 System.out.println("Enter Identification Mark ");
-			 String idt=sc.nextLine();
+			 String idnt=sc.nextLine();
 			 System.out.println("Enter Crime Police Station Id: ");
 			 int psId=sc.nextInt();
 			 System.out.println("Enter the age ");
 			 int age=sc.nextInt();
-			 crime.NewCrime(cid,crimeDes, crimeDes, Location, psId, criminal_name, victim_name, status,age,gender,idt,addr);
+			 crime.newCrime(crimeDes, crimeDes, Location, psId, criminal_name, victim_name, status, age, gender, idnt, addr);
 			 break;
 			 
 			
@@ -206,6 +206,8 @@ public class DashBoard {
 			 
 		
 		}while(i!=0);
+		System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=->Thanks For visiting <-=-=-==-=-=-=-=-=-=-=-=-=-=-=");
+
 				
 	}
 	public void printUserMenu(Scanner sc) throws NoCrimeRecord {
@@ -246,6 +248,8 @@ public class DashBoard {
 				 break;
 			 }
 		}while(i!=0);
+		System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=->Thanks For visiting <-=-=-==-=-=-=-=-=-=-=-=-=-=-=");
+
 		
 		
 	}
