@@ -1,3 +1,4 @@
+
 <h1 align="center">Crime Information Management System</h1>
 
 <p>This is a Crime Information Management System (CIMS) built using Java and MySQL.<br> It provides a platform for police departments to manage crime data, including criminal information, crime types, and police station information.</p>
@@ -53,3 +54,5 @@ Contributing
 Contributions to the project are welcome. Please submit a pull request with your proposed changes.
 <h1 align=center>ER Diagram</h1>
 <img src="https://raw.githubusercontent.com/Rizwank123/third-ice-7307/day_5/img/sql.png">
+
+
