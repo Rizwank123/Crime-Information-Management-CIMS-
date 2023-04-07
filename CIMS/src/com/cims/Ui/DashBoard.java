@@ -16,6 +16,7 @@ import com.cims.dto.Crime;
 import com.cims.dto.Criminal;
 
 public class DashBoard {
+	Colors color=new Colors();
 	CriminalDao crm=new CriminalDaoImpl();
 	CrimeDao crime=new CrimeDaoImpl();
 	Police_StationDao ps=new Police_stationDaoImpl();
@@ -27,8 +28,8 @@ public class DashBoard {
 		
 		int i=0;
 		do {
-		System.out.println(s);
-		System.out.println("1. For search crime ");
+		System.out.println(color.YELLOW_BRIGHT+s+color.RESET);
+		System.out.println(color.YELLOW_BRIGHT+"1. For search crime ");
 		System.out.println("2. For search crime of Criminal ");
 		System.out.println("3. All Crime in  Current month ");
 		System.out.println("4. Serch Crime by type ");
@@ -38,8 +39,8 @@ public class DashBoard {
 		System.out.println("8. Search crime by victim   ");
 		System.out.println("9. Make it Solved   ");
 		System.out.println("10. Register new Crime   ");
-		System.out.println("99. Logout   ");
-		System.out.println("0. exit   ");
+		System.out.println("99. Logout   "+color.RESET);
+		System.out.println(color.RED+"0. exit   "+color.RESET);
 		
 		 i=sc.nextInt();
 		 switch(i)
@@ -48,7 +49,7 @@ public class DashBoard {
 			 List<Criminal>list1=new ArrayList<>();
 			 List<Crime>list=new ArrayList<>();
 						 
-			 System.out.println("Enter Criminal name: ");
+			 System.out.println(color.PURPLE+"Enter Criminal name: "+color.RESET);
 			 sc.nextLine();
 			 String st=sc.nextLine();
 			try {
@@ -60,9 +61,9 @@ public class DashBoard {
 				// TODO Auto-generated catch block
 				System.out.println(e1.getLocalizedMessage()+"No Record Found");;
 			}
-			System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
-			list.forEach(e->System.out.println(e));
-			System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+			System.out.println(color.PURPLE+"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"+color.RESET);
+			list.forEach(e->System.out.println(color.BLUE+e+color.RESET));
+			System.out.println(color.PURPLE+"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"+color.RESET);
 			break;
 		 case 2: 
 			 
@@ -86,22 +87,23 @@ public class DashBoard {
 		 	
 		 	
 		 case 3:  try {
-				list=crime.findByCurrentMonth();
-				System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
-				list.forEach(l->System.out.println(l));
-				System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+			 
+				list=crime.findByCurrentMonth(); //current month crime
+				System.out.println(color.PURPLE+"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"+color.RESET);
+				list.forEach(l->System.out.println(color.BLACK+color.WHITE_BACKGROUND+l+color.RESET));
+				System.out.println(color.PURPLE+"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"+color.RESET);
 			} catch (NoCrimeRecord e1) {
 				// TODO Auto-generated catch block
 				System.out.println(e1.getMessage()+"No record found");
 			}
 		 	break;
 		 case 4:
-			 System.out.println("Enter Crime type: ");
+			 System.out.println(color.CYAN+"Enter Crime type: "+color.RESET);
 			 try {
 				list=crime.findByCrimeType(sc.next());
 				System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
-				list.forEach(l->System.out.println(l));
-				System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+				list.forEach(l->System.out.println(color.YELLOW+l+color.RESET));
+				System.out.println(color.PURPLE+"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"+color.RESET);
 			} catch (NoCrimeRecord e1) {
 				// TODO Auto-generated catch block
 				System.out.println(e1.getLocalizedMessage()+"No record found");
@@ -212,7 +214,7 @@ public class DashBoard {
 	}
 	public void printUserMenu(Scanner sc) throws NoCrimeRecord {
 		String s="===================================\n"
-				+ "*     User Menu   		      	*\n"
+				+ "*     User Menu   		      *\n"
 				+ "*   Enter your Choice            *\n"
 				+ "==================================\n";
 		List<Crime>list=new ArrayList<>();
