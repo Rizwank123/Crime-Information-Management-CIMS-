@@ -230,54 +230,7 @@ public class CrimeDaoImpl implements CrimeDao {
 		
 	}
 
-	@Override
-//	public void NewCrime(int crime_id,int cr_id,String crime_type, String crime_desc, String location, int psId, String criminal,
-//			String victim, String Status ,int age,String gender,String identityingMark,String address ) throws NoCrimeRecord {
-//		// TODO Auto-generated method stub
-//		try(Connection conn=Dbutil.connectToDb())
-//		{
-//			 String sql = "INSERT INTO crime (crime_type, date_time, crime_desc, location, ps_id, criminal, victim, status) VALUES (?,?, NOW(), ?, ?, ?, ?, ?, ?)";
-//	            PreparedStatement statement = conn.prepareStatement(sql);
-//
-//	            // Set the values for the parameters of the SQL statement
-//	            
-//	            statement.setInt(1, cr_id);
-//	            statement.setString(2, crime_type);
-//	            statement.setString(3, crime_desc);
-//	            statement.setString(4,location);
-//	            statement.setInt(5, psId); // assuming police station id is 1
-//	            statement.setString(6, criminal);
-//	            statement.setString(7, victim);
-//	            statement.setString(8, Status);
-//
-//	            // Execute the SQL statement
-//	            //int rowsInserted = statement.executeUpdate();
-//	            
-//	            String criminalQuery = "INSERT INTO criminal (crime_id, cr_name, cr_age,gender,identifying_mark,cr_address) VALUES ( ?, ?, ?,?,?,?,?,?)";
-//	            PreparedStatement criminalStatement = conn.prepareStatement(criminalQuery);
-//	            
-//	            criminalStatement.setInt(1, cr_id); 
-//	            criminalStatement.setString(2, criminal); 
-//	            criminalStatement.setInt(3, age); 
-//	            criminalStatement.setString(4, gender); 
-//	            criminalStatement.setString(5, identityingMark); 
-//	            criminalStatement.setString(6, address); 
-//	            
-//	            
-//
-//	            if (statement.executeUpdate() > 0 &&criminalStatement.executeUpdate()>0 ) {
-//	                System.out.println("A new crime was inserted successfully!");
-//	            } else {
-//	               throw new NoCrimeRecord("Some Thing is Wrong Please Check Your Query");
-//	            }
-//	            {
-//	            	
-//	            }
-//		}catch(SQLException ex) {
-//			ex.printStackTrace();
-//		}
-//		
-//	}
+	
 	
 	
 	public void newCrime(String crime_type, String crime_desc, String location, int psId, String criminal,
