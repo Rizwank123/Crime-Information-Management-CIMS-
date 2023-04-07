@@ -74,29 +74,32 @@ System.out.println();
 						String pass=sc.next();
 						
 						
-						if(uname.equalsIgnoreCase("admin")&& pass.equalsIgnoreCase("admin"))
+						if(uname.equalsIgnoreCase("admin@gmail.com"))
 						{
+							//user credential
 							String crd=ps.AdminLogin(uname, pass);
 							System.out.println(crd);
-							if(crd.equals(color.RED_BRIGHT+"Invalid user or password"+color.RESET))
+							if(crd.equals("Invalid user or password"))
 							{
-//								System.out.println("hi");
+								System.out.println(color.RED+"Invalid user or password"+color.RED);
 								Main.main(args);
 							}
-							else {
+							else if(crd.equalsIgnoreCase("Login Suscessfull")) {
 							dbs.printAdminMenu(sc);
 							}
 							
 						}
-						else if(!uname.equalsIgnoreCase("admin")) {
+						else if(!uname.equalsIgnoreCase("admin@gmail.com")) {
 							String crd=ps.psLogin(uname, pass);
 
-							System.out.println(crd);
-							if(crd.equals(color.RED_BOLD+"Invalid User Or Password try again please"+color.RESET)) {
+							System.out.println(color.GREEN+crd+color.RESET);
+							if(crd.equals("Invalid User Or Password try again please")) {
 //								System.out.println("hello");
 								Main.main(args);
 							}
-							else {
+							else if(crd.equalsIgnoreCase("Login Suscessfull")) {
+								//User login
+								
 							dbs.printUserMenu(sc);
 							}
 						}

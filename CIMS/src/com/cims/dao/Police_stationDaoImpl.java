@@ -27,7 +27,10 @@ public class Police_stationDaoImpl implements Police_StationDao {
 			while(rs.next()) {
 				
 				if(rs.getString("email").equalsIgnoreCase(user) && rs.getString("pass").equalsIgnoreCase( hashSHA256(password))) {
-					login="Welcome "+rs.getString("name");
+					
+					
+					login="Login Suscessfull";
+					System.out.println(color.PURPLE+"Welcome"+" "+rs.getString("name")+color.RESET);
 					
 					break;
 				}
@@ -42,12 +45,36 @@ public class Police_stationDaoImpl implements Police_StationDao {
 	}
 
 	@Override
+	//admin login method
 	public String AdminLogin(String user, String password) {
 		// TODO Auto-generated method stub
-		String login="Invalid user or password";
-		if(user.equalsIgnoreCase("admin")&& password.equalsIgnoreCase("admin") ) {
-			login="Login Suscessfull ";
+		String login="Invalid User Or Password try again please ";
+		//hold the email   for further compression
+		
+		// database connection provider
+		try(Connection conn=Dbutil.connectToDb())
+		{
+			String query="select email,pass from users";
+			PreparedStatement ps=conn.prepareStatement(query);
+			ResultSet rs=ps.executeQuery();
+			
+						
+			while(rs.next()) {
+				
+				if(rs.getString("email").equalsIgnoreCase(user) && rs.getString("pass").equalsIgnoreCase( hashSHA256(password))) {
+					
+					login="Login Suscessfull";
+					
+					break;
+				}
+			}
+		}catch(SQLException ex)
+		{
+			System.err.println(ex.getMessage());
+			
 		}
+		
+		
 		return login;
 	}
 
