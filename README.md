@@ -52,15 +52,15 @@ The system is menu-driven and user-friendly. Simply follow the prompts to naviga
 Contributing
 <h3 align="center">Sql Queries</h3>
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=
-select email,pass,name from users
-INSERT INTO users (name, age, email, pass) VALUES (?, ?, ?, ?)";
-Query for finding crime in current Month ->  "SELECT * FROM crime WHERE MONTH(date_time) = MONTH(CURRENT_DATE()) AND YEAR(date_time) = YEAR(CURRENT_DATE())";
+select email,pass,name from users<br>
+INSERT INTO users (name, age, email, pass) VALUES (?, ?, ?, ?)";<br>
+Query for finding crime in current Month ->  "SELECT * FROM crime WHERE MONTH(date_time) = MONTH(CURRENT_DATE()) AND YEAR(date_time) = YEAR(CURRENT_DATE())";<br>
 
-Query for finding all solved crime->   "SELECT * FROM crime WHERE status = 'solved'"
-Query for finding all Unsolved crime->   "SELECT * FROM crime WHERE status = 'Unsolved'"
-Query for solved the crime->  UPDATE crime SET status = 'Solved' WHERE crime_id = ?"
+Query for finding all solved crime->   "SELECT * FROM crime WHERE status = 'solved'"<br>
+Query for finding all Unsolved crime->   "SELECT * FROM crime WHERE status = 'Unsolved'"<br>
+Query for solved the crime->  UPDATE crime SET status = 'Solved' WHERE crime_id = ?"<br>
 Query for register new crime -> "INSERT INTO crime (crime_type, date_time, crime_desc, location, ps_id, criminal, victim, status) "
-		            + "VALUES (?, NOW(), ?, ?, ?, ?, ?, ?)";
+		            + "VALUES (?, NOW(), ?, ?, ?, ?, ?, ?)";<br>
                     
                     "INSERT INTO criminal (crime_id, cr_name, cr_age, gender, identifying_mark, cr_address) "
 		            + "VALUES (?, ?, ?, ?, ?, ?)";
