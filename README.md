@@ -20,8 +20,8 @@ Prerequisites
 
 To run this project, you will need:
 
-    <b>Java Development Kit (JDK) 8 or later
-    MySQL server</b>
+    Java Development Kit (JDK) 8 or later
+    MySQL server
 
 <h3>Installation</h3>
 
@@ -54,7 +54,7 @@ Contributing
 Contributions to the project are welcome. Please submit a pull request with your proposed changes.
 <h1 align=center>ER Diagram</h1>
 <img src="https://raw.githubusercontent.com/Rizwank123/third-ice-7307/day_5/img/sql.png">
-<h3 align="center">Project Presentation  video</h3>
+<h3 align="center" style="color:red;">Project Presentation  video</h3>
 
 
 [![Video](https://raw.githubusercontent.com/Rizwank123/third-ice-7307/main/img/1.png)](https://drive.google.com/file/d/1bXQJJSzBqwyWkQ0vn1YF2tO94c5ZQG7x/view?usp=share_link)
