@@ -7,13 +7,7 @@ import com.cims.Exceptions.NoCrimeRecord;
 import com.cims.dto.Crime;
 
 public interface CrimeDao {
-	/**
-     * Retrieves a list of crimes with the specified crime type.
-     *
-     * @param crimeType a String representing the type of crime to search for.
-     * @return a list of Crime objects that match the specified crime type.
-     * @throws NoCrimeRecord if no crime record is found for the specified crime type.
-     */
+	// Returns a list of crimes with the specified crime type.
 	public List<Crime> findByCrimeType(String crimeType) throws NoCrimeRecord;
 
 	// Returns a list of crimes that occurred in the current month.
