@@ -14,7 +14,14 @@ import com.cims.Util.Dbutil;
 public class Police_stationDaoImpl implements Police_StationDao {
 	
 	Colors color=new Colors();
+	
+	/**
 
+    Authenticate the police station user by checking the provided username and password against the database.
+    @param username the username of the police station user
+    @param password the password of the police station user
+    @return the status message of the authentication process, either "success" or an error message
+    */
 	@Override
 	public String psLogin(String user, String password) {
 		// TODO Auto-generated method stub
@@ -44,8 +51,15 @@ public class Police_stationDaoImpl implements Police_StationDao {
 		return login;
 	}
 
+	/**
+
+    Authenticate the admin user by checking the provided username and password against the database.
+    @param username the username of the admin user
+    @param password the password of the admin user
+    @return the status message of the authentication process, either "success" or an error message
+    */
+
 	@Override
-	//admin login method
 	public String AdminLogin(String user, String password) {
 		// TODO Auto-generated method stub
 		String login="Invalid User Or Password try again please ";
@@ -77,7 +91,14 @@ public class Police_stationDaoImpl implements Police_StationDao {
 		
 		return login;
 	}
+	/**
 
+    Register a new user by inserting a new record into the user table in the database.
+    @param name the name of the new user
+    @param age the age of the new user
+    @param email the email address of the new user
+    @param pass the password of the new user
+    */
 	@Override
 	public void NewUserRegistration(String name, int age, String email, String pass) {
 		// TODO Auto-generated method stub
@@ -101,11 +122,15 @@ public class Police_stationDaoImpl implements Police_StationDao {
 	    }
 		
 	}
-	//this method use generate SHA256 hash of input password string  string 
-	 public static String hashSHA256(String input) {
+	/**
+	 * convert plain text to SHA2 hash 
+	 @param  password 
+	 @return hashed format string 
+	 */
+	 public static String hashSHA256(String password) {
 	        try {
 	            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-	            byte[] hash = digest.digest(input.getBytes(StandardCharsets.UTF_8));
+	            byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
 	            StringBuilder hexString = new StringBuilder();
 
 	            for (byte b : hash) {
