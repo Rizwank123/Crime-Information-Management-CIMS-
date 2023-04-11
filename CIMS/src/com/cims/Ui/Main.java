@@ -3,8 +3,6 @@ package com.cims.Ui;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import com.cims.Exceptions.NoCrimeRecord;
 import com.cims.dao.Police_StationDao;
@@ -12,7 +10,6 @@ import com.cims.dao.Police_stationDaoImpl;
 
 public class Main {
 	public static void main(String[] args) throws SQLException, NoCrimeRecord {
-		Colors color=new Colors(); //color library 
 String banner = " ========================================================================================================================\n"
 				+ "=  ====  ====  =========  ==========================================================     ===    ==  =====  ===      ==\n"
 				+ "=  ====  ====  =========  =========================================================  ===  ===  ===   ===   ==  ====  =\n"
@@ -44,62 +41,48 @@ System.out.println();
 		Scanner sc=new Scanner(System.in);
 			int i=0;
 			do {
-				System.out.println(color.GREEN+"1. For login Already Register user"+color.RESET);
-				System.out.println(color.PURPLE+"2. For New  User  Register "+color.RESET);
-				System.out.println(color.RED+"0. For Exit "+color.RESET);
+				System.out.println("1. For login Already Register user");
+				System.out.println("2. For New  User  Register ");
+				System.out.println("0. For Exit ");
 				try {
 					i=sc.nextInt();
 				}catch(InputMismatchException ex )
 				{
-					System.out.println(color.BLUE_BOLD+"Enter Integer Only"+color.RESET);
+					System.out.println("Enter Integer Only");
 					Main.main(args);
 				}
 				if(i==0 ||i==1 || i==2) {
 				switch(i) {
 				case 1: ps=new Police_stationDaoImpl();
-						System.out.println(color.GREEN_BRIGHT+"Please Enter the user Email: "+color.RESET);
+						System.out.println("Please Enter the username: ");
 						String uname=sc.next();
-						
-						String regex = "^[A-Za-z0-9+_.-]+@(.+)$"; //regex for validating email
-
-				 		Pattern pattern = Pattern.compile(regex);
-
-				 	
-				 			Matcher matcher = pattern.matcher(uname);
-				 			if(!matcher.matches()) {
-				 				System.out.println(color.RED+color.CYAN_BACKGROUND+"Please Enter valid email ex= eg@example.com "+color.RESET);
-				 				uname=sc.next();
-				 			}
-						System.out.println(color.BLUE+"Please Enter password: "+color.RESET);
+						System.out.println("Please Enter password: ");
 						String pass=sc.next();
 						
 						
-						if(uname.equalsIgnoreCase("admin@gmail.com"))
+						if(uname.equalsIgnoreCase("admin")&& pass.equalsIgnoreCase("admin"))
 						{
-							//user credential
 							String crd=ps.AdminLogin(uname, pass);
 							System.out.println(crd);
 							if(crd.equals("Invalid user or password"))
 							{
-								System.out.println(color.RED+"Invalid user or password"+color.RED);
+								System.out.println("hi");
 								Main.main(args);
 							}
-							else if(crd.equalsIgnoreCase("Login Suscessfull")) {
+							else {
 							dbs.printAdminMenu(sc);
 							}
 							
 						}
-						else if(!uname.equalsIgnoreCase("admin@gmail.com")) {
+						else if(!uname.equalsIgnoreCase("admin")) {
 							String crd=ps.psLogin(uname, pass);
 
-							System.out.println(color.GREEN+crd+color.RESET);
+							System.out.println(crd);
 							if(crd.equals("Invalid User Or Password try again please")) {
-//								System.out.println("hello");
+								System.out.println("hello");
 								Main.main(args);
 							}
-							else if(crd.equalsIgnoreCase("Login Suscessfull")) {
-								//User login
-								
+							else {
 							dbs.printUserMenu(sc);
 							}
 						}
@@ -107,25 +90,13 @@ System.out.println();
 						
 				case 2:
 					
-					 System.out.println(color.BLUE+"Enter Name: "+color.RESET);
+					 System.out.println("Enter Name: ");
 					 		String name=sc.next();
-					 		System.out.println(color.BLUE+"User Age: "+color.RESET);
+					 		System.out.println("User Age: ");
 					 		int age=sc.nextInt();
-					 		System.out.println(color.GREEN+"Enter Email: "+color.RESET);
+					 		System.out.println("Enter Email: ");
 					 		String email=sc.next();
-			
-					 		String regex1 = "^[A-Za-z0-9+_.-]+@(.+)$";
-
-					 		Pattern pattern1 = Pattern.compile(regex1);
-
-					 	
-					 			Matcher matcher1 = pattern1.matcher(email);
-					 			if(!matcher1.matches()) {
-					 				System.out.println(color.RED+color.PURPLE_BACKGROUND+"Please Enter valid email ex= eg@example.com "+color.RESET);
-					 				email=sc.next();
-					 			}
-					 		
-					 		System.out.println(color.YELLOW_BRIGHT+"Enter password"+color.RESET);
+					 		System.out.println("Enter password");
 					 		String pswd=sc.next();
 					 
 						ps.NewUserRegistration(name,age,email,pswd);
@@ -133,10 +104,10 @@ System.out.println();
 						break;
 				}
 			}
-				else System.out.println(color.RED_BOLD_BRIGHT+"Invalid Input\n"+color.RESET);
+				else System.out.println("Invalid Input\n");
 				
 			}while(i!=0);
-			System.out.println(color.GREEN+color.WHITE+"=-=-=-=-=-=-=-=-=-=-=-=-=->Thanks For visiting <-=-=-==-=-=-=-=-=-=-=-=-=-=-="+color.RESET);
+			System.out.println("\033[092m"+"=-=-=-=-=-=-=-=-=-=-=-=-=->Thanks For visiting <-=-=-==-=-=-=-=-=-=-=-=-=-=-=");
 			
 			
 			
