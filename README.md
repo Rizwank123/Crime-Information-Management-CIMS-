@@ -1,14 +1,13 @@
-
 <h1 align="center">Crime Information Management System</h1>
 
 <p>This is a Crime Information Management System (CIMS) built using Java and MySQL.<br> It provides a platform for police departments to manage crime data, including criminal information, crime types, and police station information.</p>
 
-
 <h3>Features</h3>
 
 The system includes the following features:
-    <ul>
-    <li>Add, edit, and delete crime types</li>
+<ul>
+<li>Add, edit, and delete crime types</li>
+
    <li> Add, edit, and delete police stations</li>
     <li>Add, edit, and delete criminals</li>
    <li> Add new crimes and associate them with relevant data such as criminals, victims, police stations, and crime types</li>
@@ -26,11 +25,10 @@ To run this project, you will need:
 <h3>Installation</h3>
 
     Clone the repository:
+
 git clone https://github.com/username/CIMS.git
 
     Set up the MySQL database using the mysql.sql file included in the repository:
-
-
 
 mysql -u root -p cims < mysql.sql
 
@@ -38,11 +36,9 @@ mysql -u root -p cims < mysql.sql
 
     Compile the project:
 
-javac *.java
+javac \*.java
 
     Run the project:
-
-
 
 java Main
 
@@ -67,9 +63,16 @@ Query for register new crime -> "INSERT INTO crime (crime_type, date_time, crime
 -=-=-=-=-=--==--=-==---=-=-=-==-=-=-=-=--==--=-=-=-=-=-==-=-=-=--=-=-==-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=
 
 Contributions to the project are welcome. Please submit a pull request with your proposed changes.
+
 <h1 align=center>ER Diagram</h1>
 <img src="https://raw.githubusercontent.com/Rizwank123/third-ice-7307/day_5/img/sql.png">
+
 <h3 align="center" style="color:red;">Project Presentation  video</h3>
 
 
+
 [![Video](https://raw.githubusercontent.com/Rizwank123/third-ice-7307/main/img/1.png)](https://drive.google.com/file/d/1bXQJJSzBqwyWkQ0vn1YF2tO94c5ZQG7x/view?usp=share_link)
+
+
+
+insert into users(name,age,email,pass)values("venom",24,"expert@gmail.com,SHA2("rizwan",256));
