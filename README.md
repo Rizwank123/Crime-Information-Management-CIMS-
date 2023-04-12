@@ -19,8 +19,8 @@ Prerequisites
 
 To run this project, you will need:
 
-    <b>Java Development Kit (JDK) 8 or later
-    MySQL server</b>
+    Java Development Kit (JDK) 8 or later
+    MySQL server
 
 <h3>Installation</h3>
 
@@ -46,12 +46,30 @@ Usage
 
 The system is menu-driven and user-friendly. Simply follow the prompts to navigate the different options and perform various operations.
 Contributing
+<h3 align="center">Sql Queries</h3>
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=
+select email,pass,name from users<br>
+INSERT INTO users (name, age, email, pass) VALUES (?, ?, ?, ?)";<br>
+Query for finding crime in current Month ->  "SELECT * FROM crime WHERE MONTH(date_time) = MONTH(CURRENT_DATE()) AND YEAR(date_time) = YEAR(CURRENT_DATE())";<br>
+
+Query for finding all solved crime->   "SELECT * FROM crime WHERE status = 'solved'"<br>
+Query for finding all Unsolved crime->   "SELECT * FROM crime WHERE status = 'Unsolved'"<br>
+Query for solved the crime->  UPDATE crime SET status = 'Solved' WHERE crime_id = ?"<br>
+Query for register new crime -> "INSERT INTO crime (crime_type, date_time, crime_desc, location, ps_id, criminal, victim, status) "
+		            + "VALUES (?, NOW(), ?, ?, ?, ?, ?, ?)";<br>
+                    
+                    "INSERT INTO criminal (crime_id, cr_name, cr_age, gender, identifying_mark, cr_address) "
+		            + "VALUES (?, ?, ?, ?, ?, ?)";
+-=-=-=-=-=--==--=-==---=-=-=-==-=-=-=-=--==--=-=-=-=-=-==-=-=-=--=-=-==-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=
 
 Contributions to the project are welcome. Please submit a pull request with your proposed changes.
 
 <h1 align=center>ER Diagram</h1>
 <img src="https://raw.githubusercontent.com/Rizwank123/third-ice-7307/day_5/img/sql.png">
-<h2 align="center" color="green">Project Presentation  video</h2>
+
+<h3 align="center" style="color:red;">Project Presentation  video</h3>
+
+
 
 [![Video](https://raw.githubusercontent.com/Rizwank123/third-ice-7307/main/img/1.png)](https://drive.google.com/file/d/1bXQJJSzBqwyWkQ0vn1YF2tO94c5ZQG7x/view?usp=share_link)
 

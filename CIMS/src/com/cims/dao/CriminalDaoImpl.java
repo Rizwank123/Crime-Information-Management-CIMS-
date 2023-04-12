@@ -15,14 +15,6 @@ import com.cims.dto.Criminal;
 
 public class CriminalDaoImpl implements CriminalDao {
 
-	
-	/**
-	 * This method searches the database for all the crimes committed by a criminal with the given name.
-	 * 
-	 * @param name The name of the criminal to search for.
-	 * @return A list of all the crimes committed by the criminal with the given name.
-	 * @throws NoCrimeRecord If no criminal records matching the given name are found in the database.
-	 */
 	@Override
 	public List<Crime> SearchCriminalByName(String name) throws NoCrimeRecord {
 		// TODO Auto-generated method stub
@@ -54,13 +46,7 @@ public class CriminalDaoImpl implements CriminalDao {
 		return list;
 	}
 
-	/**
-	 * This method searches the database for all the criminals who committed the crime with the given ID.
-	 * 
-	 * @param id The ID of the crime to search for.
-	 * @return A list of all the criminals who committed the crime with the given ID.
-	 * @throws NoCrimeRecord If no criminal records matching the given ID are found in the database.
-	 */
+
 	@Override
 	public List<Criminal> SearchCriminalByCrimeId(int crimeId) throws NoCrimeRecord {
 		// TODO Auto-generated method stub
